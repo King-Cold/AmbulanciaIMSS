@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Ambulancias</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* HEADER */
+header{
+    background:#d32f2f;
+    padding:20px;
+    text-align:center;
+    color:white;
+}
+
+/* BUSCADOR */
+.buscador{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+
+.buscador input{
+    width:90%;
+    max-width:500px;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+
+/* CONTENEDOR */
+.contenedor{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    width:300px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    margin:5px 0;
+    color:#555;
+}
+
+button{
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#d32f2f;
+    color:white;
+}
+
+button:hover{
+    background:#9a0007;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .card{
+        width:90%;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Sistema de Ambulancias</h1>
+    <div class="buscador">
+        <input type="text" id="buscar" placeholder="Buscar persona..." onkeyup="filtrar()">
+    </div>
+</header>
+
+<section class="contenedor" id="listaPersonas">
+
+<div class="card">
+    <h3>Juan Pérez</h3>
+    <p>Emergencia: Accidente</p>
+    <p>Dirección: Calle 50 x 60, Mérida</p>
+    <button onclick="verUbicacion('Calle 50 x 60, Mérida')">
+        Ver Ubicación
+    </button>
+</div>
+
+<div class="card">
+    <h3>María López</h3>
+    <p>Emergencia: Desmayo</p>
+    <p>Dirección: Calle 21 x 30, Mérida</p>
+    <button onclick="verUbicacion('Calle 21 x 30, Mérida')">
+        Ver Ubicación
+    </button>
+</div>
+
+<div class="card">
+    <h3>Carlos Gómez</h3>
+    <p>Emergencia: Herida</p>
+    <p>Dirección: Calle 10 x 45, Mérida</p>
+    <button onclick="verUbicacion('Calle 10 x 45, Mérida')">
+        Ver Ubicación
+    </button>
+</div>
+
+</section>
+
+<script>
+
+/* FILTRO EN TIEMPO REAL */
+function filtrar(){
+    let input = document.getElementById("buscar").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0; i < cards.length; i++){
+        let texto = cards[i].innerText.toLowerCase();
+        cards[i].style.display = texto.includes(input) ? "block" : "none";
+    }
+}
+
+/* ABRIR GOOGLE MAPS */
+function verUbicacion(direccion){
+    let url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(direccion);
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
