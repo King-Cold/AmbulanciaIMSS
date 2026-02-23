@@ -151,14 +151,17 @@ function filtrar(){
 }
 
 /* ABRIR GOOGLE MAPS */
-function verUbicacion(direccion){
+function verRuta(destino){
 
-    let url = "https://www.google.com/maps/dir/?api=1"
-            + "&origin=My+Location"
-            + "&destination=" + encodeURIComponent(direccion)
-            + "&travelmode=driving";
+    const url = "https://www.google.com/maps/dir/?api=1"
+        + "&origin=My+Location"
+        + "&destination=" + encodeURIComponent(destino)
+        + "&travelmode=driving"
+        + "&dir_action=navigate";
 
     window.open(url, "_blank");
+
+}
 
 }
 
@@ -167,5 +170,6 @@ function verUbicacion(direccion){
 </body>
 
 </html>
+
 
 
