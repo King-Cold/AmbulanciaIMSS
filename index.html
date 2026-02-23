@@ -149,8 +149,14 @@ function filtrar(){
 
 /* ABRIR GOOGLE MAPS */
 function verUbicacion(direccion){
-    let url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(direccion);
+
+    let url = "https://www.google.com/maps/dir/?api=1"
+            + "&origin=My+Location"
+            + "&destination=" + encodeURIComponent(direccion)
+            + "&travelmode=driving";
+
     window.open(url, "_blank");
+
 }
 
 </script>
@@ -158,3 +164,4 @@ function verUbicacion(direccion){
 </body>
 
 </html>
+
